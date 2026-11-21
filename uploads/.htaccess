@@ -1,0 +1,6 @@
+﻿# Matikan eksekusi script PHP di dalam folder uploads
+<FilesMatch "\.(php|php5|php7|php8|phtml|pl|py|cgi)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+Options -Indexes

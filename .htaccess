@@ -1,0 +1,11 @@
+﻿# Matikan directory indexing
+Options -Indexes
+
+# Lindungi file rahasia .env.php dan file konfigurasi sensitif
+<FilesMatch "^\.env|\.env\.php|config\.php|migration\.sql|database\.sql|Dockerfile|render\.yaml|vercel\.json$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Pastikan index.php selalu menjadi entry point utama
+DirectoryIndex index.php index.html
