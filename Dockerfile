@@ -1,14 +1,12 @@
-# Dockerfile untuk Deployment Render.com (PHP Apache + MySQL Client)
 FROM php:8.1-apache
 
-# Install ekstensi PDO MySQL
-RUN docker-php-ext-install pdo pdo_mysql
-
-# Aktifkan mod_rewrite Apache
+# Konfigurasi Apache port binding untuk Render ($PORT environment variable)
+RUN sed -i 's/80/${PORT:-80}/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
 RUN a2enmod rewrite
 
 # Copy seluruh kodingan ke web root
 COPY . /var/www/html/
 
-# Port standar Cloud Web Service
+WORKDIR /var/www/html
+
 EXPOSE 80
